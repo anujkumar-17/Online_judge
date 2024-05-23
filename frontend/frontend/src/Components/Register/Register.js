@@ -1,29 +1,22 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-const Register = () => {
-  const [username, setUname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [birthYear, setBYear] = useState('');
-  const [country, setCountry] = useState('');
+const Register= () => {
+  const[username,setUname]=useState('');
+  const[email,setEmail]=useState('');
+  const[password,setPassword]=useState('');
+  const[confirmPassword,setCPassword]=useState('');
+  const[birthYear,setBYear]=useState('');
+  const[country,setCountry]=useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, email, password, birthYear, country }),
-      });
-
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    // registration logic 
+    console.log('Username:', username);
+    console.log('Email:', email);
+    console.log('Password:', password);
+    console.log('Confirm Password:', confirmPassword);
+    console.log('Birth Year:', birthYear);
+    console.log('Country:', country);
   };
 
   return (
@@ -55,6 +48,15 @@ const Register = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setCPassword(e.target.value)}
           />
         </div>
         <div>
