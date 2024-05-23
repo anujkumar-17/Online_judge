@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 
-const Register = () => {
-  const [username, setUname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [birthYear, setBYear] = useState('');
-  const [country, setCountry] = useState('');
+const Register=() => {
+  const[username, setUname]=useState('');
+  const[email, setEmail]=useState('');
+  const[password, setPassword]=useState('');
+  const[birthYear, setBYear]=useState('');
+  const[country, setCountry]=useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit=async(e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch('/api/auth/register', {
+    try{
+      const response=await fetch('/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
