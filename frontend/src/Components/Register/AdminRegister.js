@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Register = () => {
+const AdminRegister = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,10 +13,10 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:3001/api/user/register', {username, email, password,birthYear,country });
+      const { data } = await axios.post('http://localhost:3001/api/admin/register', {username, email, password,birthYear,country });
       console.log(data);
       alert('Registration successful!');
-      navigate('/');
+      navigate('/'); // Redirect to login page
     } catch (error) {
       console.error(error);
     }
@@ -24,7 +24,7 @@ const Register = () => {
 
   return (
     <div>
-      <h2>Register</h2>
+      <h2>Admin Register</h2>
       <form onSubmit={handleRegister}>
         <input
           type="text"
@@ -63,4 +63,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default AdminRegister;

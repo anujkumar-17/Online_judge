@@ -6,7 +6,8 @@ const userSchema=new mongoose.Schema({
   password:{type: String,required: true,},
   birthYear:{type: Number,required: true,},
   country:{type: String,required: true,},
-});
+},
+{timestamps:true});
 
 module.exports = mongoose.model('User', userSchema);
 

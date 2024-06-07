@@ -2,24 +2,25 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+
+const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:3001/api/user/login', { email, password });
+      const { data } = await axios.post('http://localhost:3001/api/admin/login', { email, password });
       const { token, role } = data;
-      localStorage.setItem('token', token);
-      localStorage.setItem('isAdmin', role === 'admin');
-      if(role === 'admin'){
-         navigate('/dashboard')
+      if (role !== 'admin') {
+        alert('You are not an admin!');
+        return;
       }
-      else{
-        navigate('/profile');
-      } 
+      localStorage.setItem('token', token);
+      localStorage.setItem('isAdmin', true);
+      navigate('/dashboard');
     } catch (error) {
       console.error(error);
     }
@@ -27,7 +28,7 @@ const Login = () => {
 
   return (
     <div>
-      <h2>User Login</h2>
+      <h2>Admin Login</h2>
       <form onSubmit={handleLogin}>
         <input
           type="email"
@@ -43,10 +44,9 @@ const Login = () => {
         />
         <button type="submit">Login</button>
       </form>
-      <p>Don't have an account? <a href="/register">Register</a></p>
-      <p>Are you an admin? <a href="/admin/login">Admin Login</a></p>
+      <p>Not an admin? <a href="/">User Login</a></p>
     </div>
   );
 };
 
-export default Login;
+export default AdminLogin;
