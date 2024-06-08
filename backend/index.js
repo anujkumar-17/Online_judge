@@ -9,6 +9,7 @@ const testcasesRoute=require("./routes/testcases.js");
 const adminRoutes = require('./routes/admin');
 const { generateFile } = require('./generateFile');
 const { executeCpp } = require('./executeCpp');
+const { generateInputFile } = require('./generateInputFile');
 
 dotenv.config();
 
@@ -30,16 +31,17 @@ app.use("/api/questions",questionsRoute)
 app.use("/api/testcases",testcasesRoute)
 
 app.post("/run", async (req, res) => {
-  const { language = 'cpp', code } = req.body;
+  const { language = 'cpp', code, input } = req.body;
   if (code === undefined) {
-      return res.status(404).json({ success: false, error: "Empty code!" });
+    return res.status(404).json({ success: false, error: "Empty code!" });
   }
   try {
-      const filePath = await generateFile(language, code);
-      const output = await executeCpp(filePath);
-      res.json({ filePath, output });
+    const filePath = await generateFile(language, code);
+    const inputPath = await generateInputFile(input);
+    const output = await executeCpp(filePath, inputPath);
+    return res.status(200).json({ output });
   } catch (error) {
-      res.status(500).json({ error: error });
+    res.status(500).json({ error: error });
   }
 });
 
