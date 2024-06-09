@@ -29,7 +29,7 @@ const readTC = async (req, res) => {
     if (!tc || tc.length === 0) {
         return res.status(400).json({ message: "No test cases found for this id" });
     }
-    res.status(200).json({ data: tc });
+    res.status(200).json({ message: tc });
   } catch(error) {
     res.status(500).json({ message: "Something went wrong while getting the test case" });
   }
@@ -63,11 +63,11 @@ const deleteTC = async (req, res) => {
        if (!pid) {
          return res.status(400).json({ message: "Please provide the ID" });
        }
-       const tc = await TC.modelTC.findOne({ pid });
+       const tc = await TC.modelTC.findOne({ pid:pid });
        if (!tc) {
           return res.status(400).json({ message: "Test case not found" });
        }
-       await TC.modelTC.deleteOne({ pid });
+       await TC.modelTC.deleteOne({ pid:pid });
        res.status(200).json({ message: "Test case deleted successfully" });
     } catch(error) {
         res.status(500).json({ message: "Something went wrong while deleting the test case" });
