@@ -1,5 +1,4 @@
-import {useState} from 'react'; 
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import AdminLogin from './Components/Login/AdminLogin';
@@ -10,20 +9,18 @@ import AdminRegister from './Components/Register/AdminRegister';
 import Compiler from './Compiler';
 
 function App(){
-  const [question,setQuestion]=useState();
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile setQuestion={setQuestion}/>}/>
+        <Route path="/profile" element={<Profile />} />
            {/* <ProtectedRoute component={Profile} /> */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/register" element={<AdminRegister />} />
-        <Route path="/dashboard" element={<Dashboard/>
-          // <ProtectedRoute component={Dashboard} isAdmin={true} />
-        } />
-        <Route path="/compiler" element={<Compiler question={question}/>} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        {/* <ProtectedRoute component={Dashboard} isAdmin={true} /> */}
+        <Route path="/compiler/:pid" element={<Compiler />} />
       </Routes>
     </Router>
   );

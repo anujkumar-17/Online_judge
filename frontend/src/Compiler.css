@@ -1,0 +1,81 @@
+.compiler-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .problem-statement-container {
+    margin-top: 20px;
+  }
+  
+  .problem-statement {
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+  }
+  
+  .editor-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .language-selection {
+    margin-bottom: 10px;
+  }
+  
+  .code-editor {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    overflow-y: auto;
+  }
+  
+  .input-output-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .input-section,
+  .output-section {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  textarea,
+  .output-box {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .run-button,
+  .submit-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  
+  .run-button:hover,
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .evaluation-result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+  }
+  

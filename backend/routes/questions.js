@@ -3,7 +3,7 @@ const { createQ, readQ, updateQ, deleteQ, getQ } = require('../controllers/quest
 const router=express.Router();
 
 router.post ("/createQ",createQ);
-router.get("/readQ",readQ);
+router.get("/",readQ);
 router.patch("/updateQ",updateQ);
 router.delete("/deleteQ",deleteQ);
 router.get("/getquestions",getQ);

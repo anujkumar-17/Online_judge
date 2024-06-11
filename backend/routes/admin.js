@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {registerAdmin,loginAdmin,getAdminDashboard,} = require('../controllers/admin');
+const authenticateAdmin = require('../middleware/authadmin');
 // const authMiddleware = require('../middleware/user');
 
 // router.post('/register', authMiddleware.authenticateAdmin, adminController.registerAdmin);
@@ -9,6 +10,6 @@ const {registerAdmin,loginAdmin,getAdminDashboard,} = require('../controllers/ad
 
 router.post('/register', registerAdmin);
 router.post('/login', loginAdmin);
-router.get('/dashboard', getAdminDashboard);
+router.get('/dashboard', authenticateAdmin, getAdminDashboard);
 
 module.exports = router;

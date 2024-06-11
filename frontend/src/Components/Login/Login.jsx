@@ -14,12 +14,11 @@ const Login = () => {
       const { token, role } = data;
       localStorage.setItem('token', token);
       localStorage.setItem('isAdmin', role === 'admin');
-      if(role === 'admin'){
-         navigate('/dashboard')
-      }
-      else{
+      if (role === 'admin') {
+        navigate('/dashboard');
+      } else {
         navigate('/profile');
-      } 
+      }
     } catch (error) {
       console.error(error);
     }

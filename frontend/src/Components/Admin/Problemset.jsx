@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Problemset = () => {
-  const [questions, setQuestions] = useState(["Problem1", "Problem2", "Problem3"]);
+  const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await axios.get("http://localhost:3001/api/questions/getQ");
+        const data = await axios.get("http://localhost:3001/api/questions/getquestions");
         setQuestions(data?.data?.data);
       } catch (error) {
         console.error("Error fetching questions:", error);
@@ -21,8 +22,9 @@ const Problemset = () => {
       <div>
         {questions && questions.map((value, idx) => (
           <div key={idx}>
-            <h2>{value?.pid}</h2>
-            <h2>{value?.title}</h2>
+            <Link to={`/compiler/${value.pid}`}>
+              <h2>{value?.pName}</h2>
+            </Link>
           </div>
         ))}
       </div>

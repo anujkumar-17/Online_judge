@@ -12,11 +12,11 @@ const DBConnection=async() => {
     });
     console.log('Database connected');
     // Drop the existing users collection
-    await dropUsersCollection();
+    //await dropUsersCollection();
 
     // Create a new users collection with the correct schema and indexes
-    await User.createCollection();
-    console.log('Users collection created');
+    //await User.createCollection();
+    //console.log('Users collection created');
    }catch (error) {
     console.log('Error while connecting with the database', error.message);
    }

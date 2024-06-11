@@ -8,7 +8,7 @@ const HomePage = ({ Problem }) => {
 
   const getQ = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/api/questions/getQ");
+      const response = await axios.get("http://localhost:3001/api/questions/getquestions");
       setProblems(response?.data?.data);
     } catch (error) {
       console.error("Error fetching questions:", error);
@@ -28,7 +28,7 @@ const HomePage = ({ Problem }) => {
         {
           problems && problems.map((value, idx) => (
             <div key={idx}>
-              <h4 style={{ cursor: "pointer" }} onClick={() => { Problem(value?.title); navigate("/editor"); }}>{value?.title}</h4>
+              <h4 style={{ cursor: "pointer" }} onClick={() => { Problem(value?.title); navigate("/compiler"); }}>{value?.title}</h4>
             </div>
           ))
         }

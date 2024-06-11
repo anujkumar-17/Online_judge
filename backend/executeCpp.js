@@ -8,6 +8,7 @@ if (!fs.existsSync(outputPath)) {
   fs.mkdirSync(outputPath, { recursive: true });
 }
 
+
 const executeCpp = (filepath, inputPath) => {
   const jobId = path.basename(filepath).split(".")[0];
   const outPath = path.join(outputPath, `${jobId}.exe`);
@@ -27,6 +28,7 @@ const executeCpp = (filepath, inputPath) => {
     );
   });
 };
+
 
 module.exports = {
   executeCpp,

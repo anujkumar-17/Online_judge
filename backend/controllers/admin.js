@@ -1,12 +1,11 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Admin = require('../models/user');
+const Admin = require('../models/admin');
 
 const registerAdmin = async (req, res) => {
   try {
     const { username, email, password, birthYear, country } = req.body;
-    console.log('Received registration admin data:',{username,email,password,birthYear,country,});
-
+    console.log('Received registration admin data:', { username, email, password, birthYear, country });
 
     // Check if admin already exists
     const existingAdmin = await Admin.findOne({ email });
@@ -24,7 +23,7 @@ const registerAdmin = async (req, res) => {
       password: hashedPassword,
       birthYear,
       country,
-      role:'admin'
+      role: 'admin',
     });
 
     await newAdmin.save();
@@ -51,7 +50,7 @@ const loginAdmin = async (req, res) => {
     }
 
     // Generate a JWT token
-    const token = jwt.sign({ adminId: admin._id, role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ email: admin.email, role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     res.status(200).json({ token, role: 'admin' });
   } catch (error) {
@@ -61,7 +60,7 @@ const loginAdmin = async (req, res) => {
 
 const getAdminDashboard = async (req, res) => {
   try {
-    const admin = await Admin.findById(req.adminId);
+    const admin = await Admin.findOne({ email: req.email });
     if (!admin) {
       return res.status(404).json({ message: 'Admin not found' });
     }
