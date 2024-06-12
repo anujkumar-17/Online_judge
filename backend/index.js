@@ -10,8 +10,7 @@ const adminRoutes = require('./routes/admin');
 const { generateFile } = require('./generateFile');
 const { executeCpp } = require('./executeCpp');
 const { generateInputFile } = require('./generateInputFile');
-const { fetchProblemStatement } = require('./getquestions');
-
+const { fetchProblemStatement, fetchTestCases } = require('./getquestions');
 dotenv.config();
 
 const app = express();
@@ -60,27 +59,33 @@ app.post("/api/run", async (req, res) => {
 });
 
 app.post('/api/evaluate', async (req, res) => {
-  const { language, code, testCases } = req.body;
-
+  const { language, code, pid } = req.body;
   try {
     const filePath = await generateFile(language, code);
+    const testCases = await fetchTestCases(pid);
+    const testCaseResults = [];
     let isAccepted = true;
 
     for (const testCase of testCases) {
-      const output = await executeCpp(filePath, testCase.input);
-      if (output.trim() !== testCase.expectedOutput.trim()) {
-        isAccepted = false;
-        break;
-      }
+      const inputPath = await generateInputFile(testCase.input);
+      const output = await executeCpp(filePath, inputPath, testCase);
+      const passed = output.trim() === testCase.expectedOutput.trim();
+      isAccepted = isAccepted && passed;
+      testCaseResults.push({
+        id: testCase.id,
+        input: testCase.input,
+        expectedOutput: testCase.expectedOutput,
+        actualOutput: output,
+        passed,
+      });
     }
 
-    res.json({ isAccepted });
+    res.json({ isAccepted, testCaseResults });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.toString() });
   }
 });
-
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });

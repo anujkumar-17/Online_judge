@@ -51,22 +51,23 @@ const Compiler = () => {
     const payload = {
       language,
       code,
-      testCases: [
-        {
-          input: input,
-          expectedOutput: '', 
-        },
-      ],
+      pid,
     };
-
+  
+    console.log('Request payload:', payload);
     try {
       const { data } = await axios.post('http://localhost:3001/api/evaluate', payload);
       setEvaluationResult(data.isAccepted ? 'Accepted' : 'Not Accepted');
+      setOutput(data.testCaseResults
+        .map((result) => `Test Case ${result.id}${result.passed ? ' Passed' : ' Failed'}:
+    Input: ${result.input}
+    Expected Output: ${result.expectedOutput}
+    Actual Output: ${result.actualOutput}`)
+        .join('\n\n'));
     } catch (error) {
-      console.log(error.response);
+      console.log(error);
     }
   };
-
   const selectedLang = (event) => {
     setLanguage(event.target.value);
   };

@@ -9,26 +9,43 @@ if (!fs.existsSync(outputPath)) {
 }
 
 
-const executeCpp = (filepath, inputPath) => {
-  const jobId = path.basename(filepath).split(".")[0];
+// const executeCpp = (filepath, inputPath) => {
+//   const jobId = path.basename(filepath).split(".")[0];
+//   const outPath = path.join(outputPath, `${jobId}.exe`);
+
+//   return new Promise((resolve, reject) => {
+//     exec(
+//       `g++ ${filepath} -o ${outPath} && cd ${outputPath} && .\\${jobId}.exe < ${inputPath}`,
+//       (error, stdout, stderr) => {
+//         if (error) {
+//           reject({ error, stderr });
+//         }
+//         if (stderr) {
+//           reject(stderr);
+//         }
+//         resolve(stdout);
+//       }
+//     );
+//   });
+// };
+
+const executeCpp = async (filePath, inputPath, testCase) => {
+  const jobId = path.basename(filePath).split(".")[0];
   const outPath = path.join(outputPath, `${jobId}.exe`);
 
   return new Promise((resolve, reject) => {
-    exec(
-      `g++ ${filepath} -o ${outPath} && cd ${outputPath} && .\\${jobId}.exe < ${inputPath}`,
-      (error, stdout, stderr) => {
-        if (error) {
-          reject({ error, stderr });
-        }
-        if (stderr) {
-          reject(stderr);
-        }
+    const command = `g++ ${filePath} -o ${outPath} && ${outPath} < ${inputPath}`;
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        reject({ error, stderr });
+      } else if (stderr) {
+        reject(stderr);
+      } else {
         resolve(stdout);
       }
-    );
+    });
   });
 };
-
 
 module.exports = {
   executeCpp,
