@@ -2,33 +2,41 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const CreateProblem = () => {
-  const [pid, setPid] = useState();
-  const [pName, setPName] = useState();
-  const [statement, setStatement] = useState();
+  const [pid, setPid] = useState('');
+  const [pName, setPName] = useState('');
+  const [statement, setStatement] = useState('');
   const [testCases, setTestCases] = useState([]);
 
   const createP = async () => {
-    const response = await axios.post('http://localhost:3001/api/questions/createQ', {
-      pid,
-      pName,
-      statement,
-    });
-    console.log(response);
+    try {
+      const response = await axios.post('http://localhost:3001/api/questions/createQ', {
+        pid,
+        pName,
+        statement,
+      });
+      console.log(response);
+    } catch (error) {
+      console.error('Error creating problem:', error);
+    }
   };
 
   const createTC = async () => {
-    const promises = testCases.map(async (testCase) => {
-      const response = await axios.post('http://localhost:3001/api/testcases/createTC', {
-        pid,
-        pName,
-        input: testCase.input,
-        output: testCase.output,
+    try {
+      const promises = testCases.map(async (testCase) => {
+        const response = await axios.post('http://localhost:3001/api/testcases/createTC', {
+          pid,
+          pName,
+          input: testCase.input,
+          output: testCase.output,
+        });
+        return response;
       });
-      return response;
-    });
 
-    const results = await Promise.all(promises);
-    console.log(results);
+      const results = await Promise.all(promises);
+      console.log(results);
+    } catch (error) {
+      console.error('Error creating test cases:', error);
+    }
   };
 
   const handleTestCaseChange = (index, field, value) => {
@@ -42,49 +50,74 @@ const CreateProblem = () => {
   };
 
   return (
-    <div>
-      <h2>Problem Upload</h2>
-      <div>
-        <span>PID:</span>
-        <input type="number" onChange={(e) => setPid(e.target.value)} />
+    <div style={{ margin: '20px', padding: '20px', backgroundColor: '#f0f0f0', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+      <h2 style={{ textAlign: 'center' }}>Problem Upload</h2>
+      <div style={{ marginBottom: '20px' }}>
+        <span style={{ display: 'block', marginBottom: '5px' }}>PID:</span>
+        <input
+          type="number"
+          value={pid}
+          onChange={(e) => setPid(e.target.value)}
+          style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ddd', color: 'black' }}
+        />
       </div>
-      <div>
-        <span>Problem Name:</span>
-        <textarea cols={80} rows={10} onChange={(e) => setPName(e.target.value)}></textarea>
+      <div style={{ marginBottom: '20px' }}>
+        <span style={{ display: 'block', marginBottom: '5px' }}>Problem Name:</span>
+        <textarea
+          cols={80}
+          rows={2}
+          value={pName}
+          onChange={(e) => setPName(e.target.value)}
+          style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ddd', color: 'black' }}
+        ></textarea>
       </div>
-      <div>
-        <span>Statement:</span>
-        <textarea cols={80} rows={10} onChange={(e) => setStatement(e.target.value)}></textarea>
+      <div style={{ marginBottom: '20px' }}>
+        <span style={{ display: 'block', marginBottom: '5px' }}>Statement:</span>
+        <textarea
+          cols={80}
+          rows={5}
+          value={statement}
+          onChange={(e) => setStatement(e.target.value)}
+          style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ddd', color: 'black' }}
+        ></textarea>
       </div>
-      <div>
+      <div style={{ marginBottom: '20px' }}>
         <h3>Test Cases</h3>
         {testCases.map((testCase, index) => (
-          <div key={index}>
-            <div>
-              <span>Input:</span>
+          <div key={index} style={{ marginBottom: '20px' }}>
+            <div style={{ marginBottom: '10px' }}>
+              <span style={{ display: 'block', marginBottom: '5px' }}>Input:</span>
               <textarea
                 cols={80}
-                rows={5}
+                rows={3}
                 value={testCase.input}
                 onChange={(e) => handleTestCaseChange(index, 'input', e.target.value)}
+                style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ddd', color: 'black' }}
               ></textarea>
             </div>
             <div>
-              <span>Output:</span>
+              <span style={{ display: 'block', marginBottom: '5px' }}>Output:</span>
               <textarea
                 cols={80}
-                rows={5}
+                rows={3}
                 value={testCase.output}
                 onChange={(e) => handleTestCaseChange(index, 'output', e.target.value)}
+                style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ddd', color: 'black' }}
               ></textarea>
             </div>
           </div>
         ))}
-        <button onClick={addTestCase}>Add Test Case</button>
+        <button onClick={addTestCase} style={{ padding: '10px 20px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+          Add Test Case
+        </button>
       </div>
-      <div>
-        <button onClick={() => createP()}>Upload Problem</button>
-        <button onClick={() => createTC()}>Upload Test Cases</button>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <button onClick={createP} style={{ padding: '10px 20px', backgroundColor: '#28a745', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+          Upload Problem
+        </button>
+        <button onClick={createTC} style={{ padding: '10px 20px', backgroundColor: '#ffc107', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+          Upload Test Cases
+        </button>
       </div>
     </div>
   );
