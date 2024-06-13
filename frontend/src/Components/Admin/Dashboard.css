@@ -1,0 +1,66 @@
+/* Dashboard.css */
+.dashboard-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-page {
+    display: flex;
+  }
+  
+  .admin-aside {
+    width: 200px;
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .admin-aside-div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .admin-aside-div > div {
+    cursor: pointer;
+    padding: 10px 0;
+  }
+  
+  .admin-dashboard {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .admin-dashboard-tag {
+    font-size: 18px;
+  }
+  
+  .admin-dashboard-components {
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    min-height: 300px;
+  }
+  
+  /* Logout.jsx (Inline Styles) */
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,12 @@
+/* src/Components/Header/Header.css */
+
+.header {
+    text-align: center;
+    padding: 2rem 0; /* Add padding to increase space below the header */
+    background-color: #0e0808; /* Ensure the background color matches the main page */
+  }
+  
+  .header-title {
+    color: rgb(9, 5, 5); /* White text color for better contrast */
+  }
+  

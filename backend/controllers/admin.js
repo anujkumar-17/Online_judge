@@ -50,9 +50,9 @@ const loginAdmin = async (req, res) => {
     }
 
     // Generate a JWT token
-    const token = jwt.sign({ email: admin.email, role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ email: admin.email, role: admin.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    res.status(200).json({ token, role: 'admin' });
+    res.status(200).json({ token, role:admin.role });
   } catch (error) {
     res.status(500).json({ message: 'An error occurred while logging in', error });
   }

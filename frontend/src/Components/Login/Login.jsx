@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Container, Box, TextField, Button, Typography, Link, Alert } from '@mui/material';
+import Header from '../Headers/Headers'; // Adjust path based on your file structure
+import './Logincss.css'; // Ensure this file exists for any custom styles
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -12,39 +16,79 @@ const Login = () => {
     try {
       const { data } = await axios.post('http://localhost:3001/api/user/login', { email, password });
       const { token, role } = data;
-      localStorage.setItem('token', token);
-      localStorage.setItem('isAdmin', role === 'admin');
+      sessionStorage.setItem('token', token);
+      sessionStorage.setItem('userRole', role);
       if (role === 'admin') {
         navigate('/dashboard');
       } else {
         navigate('/profile');
       }
     } catch (error) {
-      console.error(error);
+      setError('Login failed. Please check your credentials and try again.');
     }
   };
-
+  
   return (
-    <div>
-      <h2>User Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
-      <p>Don't have an account? <a href="/register">Register</a></p>
-      <p>Are you an admin? <a href="/admin/login">Admin Login</a></p>
-    </div>
+    <>
+      <Header /> {/* Include the Header component */}
+      <Container className="container" maxWidth="xs">
+        <Box className="card">
+          {error && <Alert severity="error" className="login-alert">{error}</Alert>}
+          <form onSubmit={handleLogin}>
+            <Typography variant="h5" className="header-title mb-1" style={{ color: '#000' }}>
+              User Login
+            </Typography>
+            <TextField
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              label="Email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              InputLabelProps={{
+                style: { color: '#000' }, // Black text for label
+              }}
+              InputProps={{
+                style: { color: '#000' }, // Black text for input
+              }}
+            />
+            <TextField
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              label="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              InputLabelProps={{
+                style: { color: '#000' }, // Black text for label
+              }}
+              InputProps={{
+                style: { color: '#000' }, // Black text for input
+              }}
+            />
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              type="submit"
+              className="login-button mt-2"
+            >
+              Login
+            </Button>
+          </form>
+          <Typography className="login-links mt-1" style={{ color: '#000' }}>
+            Don't have an account? <Link href="/register" style={{ color: '#2196f3' }}>Register</Link>
+          </Typography>
+          <Typography className="login-links" style={{ color: '#000' }}>
+            Are you an admin? <Link href="/admin/login" style={{ color: '#2196f3' }}>Admin Login</Link>
+          </Typography>
+        </Box>
+      </Container>
+    </>
   );
 };
 

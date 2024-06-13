@@ -78,10 +78,31 @@ const deleteQ=async(req,res)=>{
     res.status(500).json({message:"Something went wrong while deleting the question"})
   }
 }
-module.exports={
-    createQ,
-    readQ,
-    updateQ,
-    deleteQ,
-    getQ
-}
+
+// const deleteQ = async (req, res) => {
+//   try {
+//     const { pName } = req.body;
+//     console.log('Attempting to delete question with pName:', pName);
+
+//     const deletedQuestion = await modelQ.findOneAndDelete({ pName });
+
+//     if (!deletedQuestion) {
+//       console.log('Question not found for pName:', pName);
+//       return res.status(404).json({ message: 'Question not found' });
+//     }
+
+//     console.log('Question deleted successfully:', deletedQuestion);
+//     return res.status(200).json({ message: 'Question deleted successfully' });
+//   } catch (error) {
+//     console.error('Error deleting question:', error);
+//     return res.status(500).json({ message: 'Internal server error', error: error.message });
+//   }
+// };
+
+module.exports = {
+  createQ,
+  readQ,
+  updateQ,
+  deleteQ,
+  getQ,
+};

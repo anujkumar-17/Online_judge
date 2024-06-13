@@ -1,4 +1,4 @@
-const QuestionModel=require("../models/questions.js")
+// const modelQ=require("../models/questions.js")
 const TC=require("../models/testcases.js");
 
 const getQuestionData=async(req,res,next)=>{

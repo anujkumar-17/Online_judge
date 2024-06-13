@@ -1,68 +1,109 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* index.css */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #e9ebed; /* Dark background color */
+  color: #0b0404; /* White text color */
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
+  padding: 1rem;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+a {
+  text-decoration: none;
+  color: #2196f3; /* Blue color for links */
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-family: 'Roboto', sans-serif;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  background-color: #f3f1f5;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover {
+  background-color: #2575fc;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 1px solid #fff; /* White border */
+  border-radius: 4px;
+  color: #fff; /* White text color */
+}
+
+input:focus {
+  border-color: #f1eef4;
+  outline: none;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding-top: 3rem; /* Add padding to increase space between header and form */
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem; /* Increased margin between header and login form */
+}
+
+.p-2 {
+  padding: 2rem;
+}
+
+.card {
+  background: #f8f9fa; /* Dark background for card */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #fff; /* Ensure white text color */
+}
+
+.header {
+  text-align: center;
+  padding: 2rem 0; /* Add padding to increase space below the header */
+  background-color: transparent; /* Set header background to transparent */
+}
+
+.header-title {
+  color: #0e0707; /* White text color for the header title */
+}
+
+.login-alert {
+  margin-bottom: 1rem;
+  color: #fff; /* White text color */
+}
+
+.login-button {
+  margin-top: 1rem;
+}
+
+.login-links {
+  margin-top: 1rem;
+  color: #2196f3; /* Blue color for links */
 }
