@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import './Profile.css'; // Import your custom styles
+import Users from '../AllUsers'; // Import the Users component
 
 const Profile = () => {
   const [questions, setQuestions] = useState([]);
@@ -11,6 +12,11 @@ const Profile = () => {
     const fetchData = async () => {
       try {
         const token = sessionStorage.getItem('token');
+        if (!token) {
+          navigate('/'); // Redirect to login if no token
+          return;
+        }
+        
         const data = await axios.get("http://localhost:3001/api/questions/getquestions", {
           headers: { Authorization: `Bearer ${token}` }
         });
@@ -20,7 +26,7 @@ const Profile = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [navigate]);
 
   const handleLogout = () => {
     // Clear the session storage
@@ -48,6 +54,9 @@ const Profile = () => {
           ))}
         </ul>
       </div>
+
+      {/* Render the Users component */}
+      <Users />
     </div>
   );
 };

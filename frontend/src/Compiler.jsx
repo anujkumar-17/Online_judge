@@ -6,7 +6,9 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/themes/prism-tomorrow.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './Compiler.css';
+import DeleteProblem from './Components/Admin/DeleteProblem';
 
 const Compiler = () => {
   const [code, setCode] = useState(`
@@ -25,6 +27,9 @@ const Compiler = () => {
   const [input, setInput] = useState('');
   const [problemStatement, setProblemStatement] = useState('');
   const [evaluationResult, setEvaluationResult] = useState('');
+  const [showDelete, setShowDelete] = useState(false);
+
+  const userRole = useSelector((state) => state.user.role);
 
   const { pid } = useParams();
 
@@ -39,7 +44,12 @@ const Compiler = () => {
     };
 
     fetchProblemStatement();
-  }, [pid]);
+
+    // Check user role and set showDelete state accordingly
+    if (userRole === 'admin') {
+      setShowDelete(true);
+    }
+  }, [pid, userRole]);
 
   const runTheCode = async () => {
     const payload = {
@@ -143,6 +153,28 @@ const Compiler = () => {
       >
         {evaluationResult}
       </div>
+      {userRole === 'admin' && (
+        <div className="admin-controls">
+          {showDelete ? (
+            <>
+              <button
+                className="delete-toggle-button"
+                onClick={() => setShowDelete(false)}
+              >
+                Hide Delete Problem
+              </button>
+              <DeleteProblem />
+            </>
+          ) : (
+            <button
+              className="delete-toggle-button"
+              onClick={() => setShowDelete(true)}
+            >
+              Delete Problem
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };

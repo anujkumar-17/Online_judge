@@ -8,6 +8,9 @@ import ProtectedRoute from './Components/ProtectedRoute';
 import AdminRegister from './Components/Register/AdminRegister';
 import Compiler from './Compiler';
 
+
+
+
 function App() {
   return (
     <Router>

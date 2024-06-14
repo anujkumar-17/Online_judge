@@ -4,7 +4,7 @@ const router=express.Router();
 
 router.post ("/createQ",createQ);
 router.get("/",readQ);
-router.patch("/updateQ",updateQ);
+router.put("/updateQ",updateQ);
 router.delete("/deleteQ",deleteQ);
 router.get("/getquestions",getQ);
 

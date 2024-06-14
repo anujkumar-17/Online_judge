@@ -1,9 +1,10 @@
-// Dashboard.jsx
 import React, { useState } from 'react';
 import CreateProblem from './CreateProblem';
 import Problemset from './Problemset';
 import Users from './Users';
 import DeleteProblem from './DeleteProblem';
+import AddTestCase from './AddTestCase'; // Import AddTestCase component
+import UpdateProblem from './UpdateProblem'; // Import UpdateProblem component
 import Logout from './Logout'; // Import Logout component
 import './Dashboard.css'; // Import your custom styles for Dashboard
 
@@ -24,6 +25,13 @@ const Dashboard = () => {
             <div className="admin-aside-delete-problem" onClick={() => setComponent(<DeleteProblem />)}>
               Delete Problem
             </div>
+            <div className="admin-aside-update-problem" onClick={() => setComponent(<UpdateProblem />)}>
+              Update Problem
+            </div>
+            <div className="admin-aside-add-test-case" onClick={() => setComponent(<AddTestCase />)}>
+              Add Test Case
+            </div>
+            <Logout /> {/* Include the Logout component here */}
           </div>
         </aside>
         <div>
@@ -32,7 +40,6 @@ const Dashboard = () => {
           </div>
           <div className="admin-dashboard-components">
             {component}
-            <Logout /> {/* Include the Logout component */}
           </div>
         </div>
       </div>
