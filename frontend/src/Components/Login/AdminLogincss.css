@@ -1,19 +1,18 @@
 /* AdminLogin.css */
 
-.container {
+ /* .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-    padding-top: 3rem; /* Add padding to increase space between header and form */
+    padding-top: 3rem;  //Add padding to increase space between header and form 
   }
-  
   .mb-1 {
     margin-bottom: 1rem;
   }
   
   .mt-2 {
-    margin-top: 2rem; /* Increased margin between header and form */
+    margin-top: 2rem; //Increased margin between header and form 
   }
   
   .p-2 {
@@ -21,26 +20,26 @@
   }
   
   .card {
-    background: #f5f6f7; /* Dark background for card */
+    background: #f5f6f7; // Dark background for card 
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    color: #fff; /* Ensure white text color */
+    color: #fff; // Ensure white text color 
   }
   
   .header {
     text-align: center;
-    padding: 2rem 0; /* Add padding to increase space below the header */
+    padding: 2rem 0; // Add padding to increase space below the header 
   }
   
   .header-title {
-    color: white; /* White text color for better contrast */
+    color: white; // White text color for better contrast 
   }
   
   .login-alert {
     margin-bottom: 1rem;
-    color: red; /* Red text color for error messages */
+    color: red; // Red text color for error messages 
   }
   
   .login-button {
@@ -49,6 +48,6 @@
   
   .login-links {
     margin-top: 1rem;
-    color: #2196f3; /* Blue color for links */
+    color: #2196f3; // Blue color for links 
   }
-  
+    */

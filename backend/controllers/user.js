@@ -75,8 +75,27 @@ const getUserProfile = async (req, res) => {
   }
 };
 
+const getUser = async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1]; // Assuming the token is passed in the Authorization header
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET); // Verify and decode the JWT token
+    const userEmail = decodedToken.email; // Assuming the user's email is stored in the decoded token
+
+    const user = await User.findOne({ email: userEmail }).select('-password'); // Retrieve the user data from the database based on the email, excluding the password field
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.toString() });
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
   getUserProfile,
+  getUser
 };

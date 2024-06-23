@@ -1,5 +1,5 @@
 const TC = require("../models/testcases.js");
-const Questions = require("../models/questions.js");
+const Question = require("../models/questions.js");
 
 const createTC = async (req, res) => {
   try {
@@ -7,7 +7,7 @@ const createTC = async (req, res) => {
     if (!pid || !input || !output) {
       return res.status(400).json({ message: "Please provide all details" });
     }
-    const question = await Questions.modelQ.findOne({ pid: pid });
+    const question = await Question.Question.findOne({ pid: pid });
     if (!question) {
       return res.status(400).json({ message: "Invalid pid" });
     }
@@ -80,7 +80,7 @@ const addTestCase = async (req, res) => {
     if (!pid || !input || !output) {
       return res.status(400).json({ message: "Please provide problem id, input, and output" });
     }
-    const question = await Questions.modelQ.findOne({ pid: pid });
+    const question = await Question.Question.findOne({ pid: pid });
     if (!question) {
       return res.status(400).json({ message: "Invalid problem id" });
     }

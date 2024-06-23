@@ -7,6 +7,8 @@ import Dashboard from './Components/Admin/Dashboard';
 import ProtectedRoute from './Components/ProtectedRoute';
 import AdminRegister from './Components/Register/AdminRegister';
 import Compiler from './Compiler';
+import LandingPage from './LandingPage';
+import Problems from './Components/User/Problems';
 
 
 
@@ -15,7 +17,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route
           path="/profile"
@@ -27,7 +30,16 @@ function App() {
           path="/dashboard"
           element={<ProtectedRoute component={Dashboard} isAdmin={true} />}
         />
-        <Route path="/compiler/:pid" element={<Compiler />} />
+        <Route
+          path="/problems"
+          element={<ProtectedRoute component={Problems} />}
+        />
+        <Route
+          path="/compiler/:pid"
+          element={<ProtectedRoute component={Compiler} />}
+        />
+        {/* <Route path="/compiler/:pid" element={<Compiler />} />
+        <Route path="/problems" element={<Compiler />} /> */}
       </Routes>
     </Router>
   );
