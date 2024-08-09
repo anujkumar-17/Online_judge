@@ -45,4 +45,5 @@ function App() {
   );
 }
 
+// vite backend url: http://43.205.211.226:3001/anuj
 export default App;

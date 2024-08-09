@@ -33,6 +33,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post('http://localhost:3001/api/user/login', { email, password });
+      // await pauses the execution of the handleLogin until promise is resolved or rejected
       const { token, role } = data;
       sessionStorage.setItem('token', token);
       sessionStorage.setItem('userRole', role);
