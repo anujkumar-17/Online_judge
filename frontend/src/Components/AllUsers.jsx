@@ -13,8 +13,8 @@ const Users = () => {
           setError('No token found in session storage');
           return;
         }
-        
-        const response = await axios.get('http://localhost:3001/api/user/allusers', {
+        // http://localhost:3001/api/user/allusers
+        const response = await axios.get('https://www.online-judge-for-all.icu/user/allusers', {
           headers: { Authorization: `Bearer ${token}` }
         });
         

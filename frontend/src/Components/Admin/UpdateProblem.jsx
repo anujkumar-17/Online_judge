@@ -98,7 +98,8 @@ const UpdateProblem = () => {
 
   const handleUpdate = async () => {
     try {
-      const response = await axios.put('http://localhost:3001/api/questions/updateQ', formData);
+      //http://localhost:3001/api/questions/updateQ
+      const response = await axios.put('https://www.online-judge-for-all.icu/questions/updateQ', formData);
       setMessage(response.data.message); // Set success message
       setFormData({
         pName: '',

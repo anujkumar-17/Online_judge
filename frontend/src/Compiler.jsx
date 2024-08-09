@@ -221,7 +221,8 @@ const Compiler = () => {
   useEffect(() => {
     const fetchProblemDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/questions/getquestions/${pid}`);
+        // http://localhost:3001/api/questions/getquestions/${pid}
+        const response = await axios.get(`https://www.online-judge-for-all.icu/questions/getquestions/${pid}`);
         setProblemDetails(response.data);
       } catch (error) {
         console.error('Error fetching problem details:', error);

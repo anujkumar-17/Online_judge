@@ -147,7 +147,8 @@ const CreateProblem = () => {
 
   const createP = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/api/questions/createQ', formData);
+      //http://localhost:3001/api/questions/createQ
+      const response = await axios.post('https://www.online-judge-for-all.icu/questions/createQ', formData);
       console.log(response);
     } catch (error) {
       console.error('Error creating problem:', error);
@@ -157,7 +158,8 @@ const CreateProblem = () => {
   const createTC = async () => {
     try {
       const promises = testCases.map(async (testCase) => {
-        const response = await axios.post('http://localhost:3001/api/testcases/createTC', {
+        //http://localhost:3001/api/testcases/createTC
+        const response = await axios.post('https://www.online-judge-for-all.icu/testcases/createTC', {
           pid: formData.pid,
           pName: formData.pName,
           input: testCase.input,

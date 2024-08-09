@@ -11,7 +11,8 @@ const AddTestCase = () => {
   const handleAddTestCase = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/api/testcases/addTC', {
+      //http://localhost:3001/api/testcases/addTC
+      const response = await axios.post('https://www.online-judge-for-all.icu/testcases/addTC', {
         pid,
         input,
         output,

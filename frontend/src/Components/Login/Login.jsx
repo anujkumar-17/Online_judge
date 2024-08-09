@@ -32,7 +32,8 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:3001/api/user/login', { email, password });
+      //https://localhost:3001/api/user/login
+      const { data } = await axios.post('https://www.online-judge-for-all.icu/login', { email, password });
       // await pauses the execution of the handleLogin until promise is resolved or rejected
       const { token, role } = data;
       sessionStorage.setItem('token', token);

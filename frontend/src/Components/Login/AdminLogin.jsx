@@ -36,7 +36,8 @@ const AdminLogin = () => {
     setLoading(true);
     setError('');
     try {
-      const { data } = await axios.post('http://localhost:3001/api/admin/login', { email, password });
+      //http://localhost:3001/api/admin/login
+      const { data } = await axios.post('https://www.online-judge-for-all.icu/admin/login', { email, password });
       const { token, role } = data;
       if (role !== 'admin') {
         setError('You are not authorized to access the admin dashboard.');

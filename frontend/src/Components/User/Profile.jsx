@@ -50,7 +50,8 @@ const Profile = () => {
         }
 
         // Fetch user data
-        const userResponse = await axios.get('http://localhost:3001/api/user', {
+        // http://localhost:3001/api/user
+        const userResponse = await axios.get('https://www.online-judge-for-all.icu/user', {
           headers: { Authorization: `Bearer ${token}` },
         });
 

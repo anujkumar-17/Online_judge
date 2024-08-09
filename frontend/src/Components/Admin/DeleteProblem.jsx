@@ -69,7 +69,8 @@ const DeleteProblem = ({ problem, onDelete }) => {
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete('http://localhost:3001/api/questions/deleteQ', { data: { pName: problem.pName } });
+      //http://localhost:3001/api/questions/deleteQ
+      const response = await axios.delete('https://www.online-judge-for-all.icu/questions/deleteQ', { data: { pName: problem.pName } });
       setMessage(response.data.message); // Set success message
       onDelete(problem.pName); // Notify parent component (Problems) about the deletion
     } catch (error) {

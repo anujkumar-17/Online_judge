@@ -37,7 +37,8 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:3001/api/user/register', { username, email, password, birthYear, country });
+      //http://localhost:3001/api/user/register
+      const { data } = await axios.post('https://www.online-judge-for-all.icu/register', { username, email, password, birthYear, country });
       console.log(data);
       alert('Registration successful!');
       navigate('/');

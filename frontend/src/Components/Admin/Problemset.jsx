@@ -8,7 +8,8 @@ const Problemset = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await axios.get("http://localhost:3001/api/questions/getquestions");
+        //http://localhost:3001/api/questions/getquestions
+        const data = await axios.get("https://www.online-judge-for-all.icu/questions/getquestions");
         setQuestions(data?.data?.data);
       } catch (error) {
         console.error("Error fetching questions:", error);

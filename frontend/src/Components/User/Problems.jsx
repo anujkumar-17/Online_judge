@@ -213,8 +213,8 @@ const Problems = () => {
           navigate('/');
           return;
         }
-
-        const response = await axios.get("http://localhost:3001/api/questions/getquestions", {
+        // http://localhost:3001/api/questions/getquestions
+        const response = await axios.get("https://www.online-judge-for-all.icu/questions/getquestions", {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = response.data.data;
