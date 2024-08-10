@@ -1,3 +1,26 @@
+// const express = require('express');
+// const app = express();
+// const authenticate = require('./customMiddleware');
+// const port = 3000;
+
+// app.use(express.json());
+
+// // Public route (no authentication required)
+// app.get('/public', (req, res) => {
+//   res.send('This is a public route');
+// });
+
+// // Protected route (authentication required)
+// app.get('/protected', authenticate, (req, res) => {
+//   res.send('This is a protected route');
+// });
+
+// app.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+// });
+
+//example of custom middleware
+
 const jwt = require('jsonwebtoken');
 
 const authMiddleware = (req, res, next) => {

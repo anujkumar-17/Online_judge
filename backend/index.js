@@ -107,7 +107,7 @@ const { fetchProblemDetails, fetchTestCases } = require('./getquestions');
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
@@ -118,10 +118,15 @@ app.use(cookieParser());
 DBConnection();
 
 // Routes
-app.use('/api/user', userRoutes);
+app.use('/', userRoutes);
 app.use('/api/admin', adminRoutes);
 app.use("/api/questions", questionsRoute);
 app.use("/api/testcases", testcasesRoute);
+
+
+app.get('/anuj',(req,res) => {
+  res.status(200).json({message: "hi everyone"});
+});
 
 app.get('/api/questions/getquestions/:id', async (req, res) => {
   try {

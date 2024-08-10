@@ -20,3 +20,7 @@ EXPOSE 3001
 
 # Specify the command to run when the container starts
 CMD [ "node", "index.js" ]
+
+
+#docker image build -t oj-backend
+#docker container run -d -p newport:oldport --name oj-backend-container oj-backend
