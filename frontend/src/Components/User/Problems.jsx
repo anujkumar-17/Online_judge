@@ -214,7 +214,7 @@ const Problems = () => {
           return;
         }
         // http://localhost:3001/api/questions/getquestions
-        const response = await axios.get("https://www.online-judge-for-all.icu/questions/getquestions", {
+        const response = await axios.get("http://3.110.249.20:3001/questions/getquestions", {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = response.data.data;

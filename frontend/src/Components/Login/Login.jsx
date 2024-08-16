@@ -33,7 +33,7 @@ const Login = () => {
     e.preventDefault();
     try {
       //https://localhost:3001/api/user/login
-      const { data } = await axios.post('https://www.online-judge-for-all.icu/login', { email, password });
+      const { data } = await axios.post('http://3.110.249.20:3001/login', { email, password });
       // await pauses the execution of the handleLogin until promise is resolved or rejected
       const { token, role } = data;
       sessionStorage.setItem('token', token);

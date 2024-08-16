@@ -222,7 +222,7 @@ const Compiler = () => {
     const fetchProblemDetails = async () => {
       try {
         // http://localhost:3001/api/questions/getquestions/${pid}
-        const response = await axios.get(`https://www.online-judge-for-all.icu/questions/getquestions/${pid}`);
+        const response = await axios.get(`http://3.110.249.20:3001/questions/getquestions/${pid}`);
         setProblemDetails(response.data);
       } catch (error) {
         console.error('Error fetching problem details:', error);

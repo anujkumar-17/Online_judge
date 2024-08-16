@@ -12,7 +12,7 @@ const AddTestCase = () => {
     e.preventDefault();
     try {
       //http://localhost:3001/api/testcases/addTC
-      const response = await axios.post('https://www.online-judge-for-all.icu/testcases/addTC', {
+      const response = await axios.post('http://3.110.249.20:3001/testcases/addTC', {
         pid,
         input,
         output,

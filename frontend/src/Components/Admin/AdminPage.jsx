@@ -43,7 +43,7 @@ const AdminPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       //http://localhost:3001/api/admin/home
-      const result = await axios.get('https://www.online-judge-for-all.icu/admin/home');
+      const result = await axios.get('http://3.110.249.20:3001/admin/home');
       setData(result.data);
     };
     fetchData();

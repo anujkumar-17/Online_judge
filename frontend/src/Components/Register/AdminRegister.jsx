@@ -38,7 +38,7 @@ const AdminRegister = () => {
     e.preventDefault();
     try {
       //http://localhost:3001/api/admin/register
-      const { data } = await axios.post('https://www.online-judge-for-all.icu/admin/register', { username, email, password, birthYear, country });
+      const { data } = await axios.post('http://3.110.249.20:3001/admin/register', { username, email, password, birthYear, country });
       console.log(data);
       alert('Registration successful!');
       navigate('/'); // Redirect to login page

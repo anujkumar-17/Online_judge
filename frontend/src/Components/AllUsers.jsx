@@ -14,7 +14,7 @@ const Users = () => {
           return;
         }
         // http://localhost:3001/api/user/allusers
-        const response = await axios.get('https://www.online-judge-for-all.icu/user/allusers', {
+        const response = await axios.get('http://3.110.249.20:3001/user/allusers', {
           headers: { Authorization: `Bearer ${token}` }
         });
         
