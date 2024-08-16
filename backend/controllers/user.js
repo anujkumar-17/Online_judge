@@ -6,6 +6,7 @@ const User = require('../models/user');
 const registerUser = async (req, res) => {
   try {
     const { username, email, password, birthYear, country } = req.body;
+    console.log('Received registration admin data:', { username, email, password, birthYear, country });
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -27,11 +28,6 @@ const registerUser = async (req, res) => {
     });
 
     await newUser.save();
-    const token = jwt.sign(
-      { email: newUser.email },
-      f3a95c1746c9b8991c2c30f7bbd6b1d91b36e11a1d4765040ef85b1c55ab768a, 
-      { expiresIn: '1h' }
-    );
     res.status(201).json({ message: 'User registered successfully', token });
   } catch (error) {
     console.error('Error during user registration:', error);
