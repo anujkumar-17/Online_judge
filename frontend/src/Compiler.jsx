@@ -222,7 +222,7 @@ const Compiler = () => {
     const fetchProblemDetails = async () => {
       try {
         // http://localhost:3001/api/questions/getquestions/${pid}
-        const response = await axios.get(`http://3.110.249.20:3001/questions/getquestions/${pid}`);
+        const response = await axios.get(`http://3.110.249.20:3001/api/questions/getquestions/${pid}`);
         setProblemDetails(response.data);
       } catch (error) {
         console.error('Error fetching problem details:', error);
@@ -244,7 +244,8 @@ const Compiler = () => {
     };
 
     try {
-      const { data } = await axios.post('http://localhost:3001/api/run', payload);
+      // http://localhost:3001/api/run
+      const { data } = await axios.post('http://3.110.249.20:3001/api/run', payload);
       setOutput(data.output);
     } catch (error) {
       console.log(error.response);
@@ -259,7 +260,8 @@ const Compiler = () => {
     };
 
     try {
-      const { data } = await axios.post('http://localhost:3001/api/evaluate', payload);
+      // http://localhost:3001/api/evaluate
+      const { data } = await axios.post('http://3.110.249.20:3001/api/evaluate', payload);
       setEvaluationResult(data.isAccepted ? 'Accepted' : 'Not Accepted');
     } catch (error) {
       console.log(error);

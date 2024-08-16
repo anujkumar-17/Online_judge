@@ -99,7 +99,7 @@ const UpdateProblem = () => {
   const handleUpdate = async () => {
     try {
       //http://localhost:3001/api/questions/updateQ
-      const response = await axios.put('http://3.110.249.20:3001/questions/updateQ', formData);
+      const response = await axios.put('http://3.110.249.20:3001/api/questions/updateQ', formData);
       setMessage(response.data.message); // Set success message
       setFormData({
         pName: '',

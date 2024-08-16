@@ -29,7 +29,7 @@ const registerUser = async (req, res) => {
     await newUser.save();
     const token = jwt.sign(
       { email: newUser.email },
-      f3a95c1746c9b8991c2c30f7bbd6b1d91b36e11a1d4765040ef85b1c55ab768a, // Replace with your actual secret key
+      f3a95c1746c9b8991c2c30f7bbd6b1d91b36e11a1d4765040ef85b1c55ab768a, 
       { expiresIn: '1h' }
     );
     res.status(201).json({ message: 'User registered successfully', token });

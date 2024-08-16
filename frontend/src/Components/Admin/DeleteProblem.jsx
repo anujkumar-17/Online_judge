@@ -70,7 +70,7 @@ const DeleteProblem = ({ problem, onDelete }) => {
   const handleDelete = async () => {
     try {
       //http://localhost:3001/api/questions/deleteQ
-      const response = await axios.delete('http://3.110.249.20:3001/questions/deleteQ', { data: { pName: problem.pName } });
+      const response = await axios.delete('http://3.110.249.20:3001/api/questions/deleteQ', { data: { pName: problem.pName } });
       setMessage(response.data.message); // Set success message
       onDelete(problem.pName); // Notify parent component (Problems) about the deletion
     } catch (error) {

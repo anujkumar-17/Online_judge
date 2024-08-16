@@ -27,7 +27,7 @@ DBConnection();
 
 // Routes
 // /api/user
-app.use('/', userRoutes);
+app.use('/api/user', userRoutes);
 app.use('/api/admin', adminRoutes);
 app.use("/api/questions", questionsRoute);
 app.use("/api/testcases", testcasesRoute);

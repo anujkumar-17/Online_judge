@@ -159,7 +159,7 @@ const CreateProblem = () => {
     try {
       const promises = testCases.map(async (testCase) => {
         //http://localhost:3001/api/testcases/createTC
-        const response = await axios.post('http://3.110.249.20:3001/testcases/createTC', {
+        const response = await axios.post('http://3.110.249.20:3001/api/testcases/createTC', {
           pid: formData.pid,
           pName: formData.pName,
           input: testCase.input,
