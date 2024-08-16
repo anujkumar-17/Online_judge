@@ -9,7 +9,7 @@ const HomePage = ({ Problem }) => {
   const getQ = async () => {
     try {
       // http://localhost:3001/api/questions/getquestions
-      const response = await axios.get("http://3.110.249.20:3001/questions/getquestions");
+      const response = await axios.get("http://3.110.249.20:3001/api/questions/getquestions");
       setProblems(response?.data?.data);
     } catch (error) {
       console.error("Error fetching questions:", error);

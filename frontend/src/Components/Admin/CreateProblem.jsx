@@ -148,7 +148,7 @@ const CreateProblem = () => {
   const createP = async () => {
     try {
       //http://localhost:3001/api/questions/createQ
-      const response = await axios.post('http://3.110.249.20:3001/questions/createQ', formData);
+      const response = await axios.post('http://3.110.249.20:3001/api/questions/createQ', formData);
       console.log(response);
     } catch (error) {
       console.error('Error creating problem:', error);
