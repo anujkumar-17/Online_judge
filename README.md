@@ -1,47 +1,57 @@
+# 🖥️ Online Judge
 
-# Online Judge
+**Online Judge** is a web-based platform designed to solve and practice algorithmic problems. Users can submit their code, which is automatically evaluated as either **Accepted** or **Not Accepted** against predefined test cases. This project aims to facilitate algorithm practice for users of all skill levels.
 
-Online Judge is a web-based platform to solve and practice out algorithmic problems. Users can submit their code, which is then automatically evaluated as accepted or not accepted against predefined test cases. This project aims to facilitate algorithm practice for users of all skill levels. You can also use the Online Judge application for free [[Click here]](https://www.online-judge-for-all.icu/) and can also check out all the codes used to built this web application from my github repository. 
+✨ You can try out the Online Judge application for free: [Click here](https://www.online-judge-for-all.icu/).  
+✨ Explore the codebase on GitHub: [Click here](https://github.com/anujkumar-17/Online_judge).
 
+---
 
-## Installation and Set Up to your local system
-### Frontend SetUp
-#####   1. Clone the repository:
-    git clone https://github.com/anujkumar-17/File-Sharing-Web-Application.git
+## 🎥 Demo
 
-##### 2. Install dependencies
-    cd File_Sharing/Frontend/
+Check out a quick presentation of the **Online Judge** application!  
+📽️ [Click here](https://www.loom.com/share/66cd5dc102cf4412827681482ede0937) to watch the demo video.
 
-    npm install
+---
 
-##### 3. Start the development server:
-    npm run dev
+## ⚙️ Installation and Setup
 
-### Backend SetUp
-#####   1. Install dependencies
-    cd ../Backend
+Follow these steps to set up the project locally:
 
-    npm install
-#####   2. Create a .env file in the backend directory and add the following configuration variables:
+### 🚀 Frontend Setup
 
-    PORT=<your_port_number>
-    MONGO_URI=<your_mongodb_uri> 
+1. Clone the repository:
+```bash
+git clone https://github.com/anujkumar-17/Online_judge.git
+```
+2. Install dependencies
+```bash
+cd Online_judge/Frontend/
+npm install
+```
+3. Start the development server:
 
-##### 3. Start backend server
-    node server.js
+```bash
+npm run dev
+```
 
-#### You will be viewing live page at vite by default port 5173: 
-    http://localhost:5173
+### 🚀 Backend Setup
 
-####
+1. Install dependencies
+```bash
+cd ../Backend
+npm install
+```
 
+2. Create a .env file in the backend directory and add the following configuration variables:
+```bash
+PORT=<your_port_number>
+MONGO_URI=<your_mongodb_uri> 
+```
 
-   
-     
- 
-        
-## Demo
-
-You must check out this small presentation of Online Judge application. [Click here](https://www.loom.com/share/66cd5dc102cf4412827681482ede0937) to watch out demo video.
-
-
+3. Start backend server
+```bash
+node server.js
+```
+#### You will be viewing live page at vite by default port 5173:
+http://localhost:5173
